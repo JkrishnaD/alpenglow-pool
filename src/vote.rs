@@ -1,9 +1,7 @@
 use {
-    crate::types::Stake,
+    crate::types::Slot,
     serde::{Deserialize, Serialize},
-    solana_bls_signatures::Signature as BLSSignature,
-    solana_pubkey::Pubkey,
-    std::collections::BTreeSet,
+    solana_hash::Hash,
     wincode::{SchemaRead, SchemaWrite},
 };
 
@@ -80,14 +78,14 @@ impl Vote {
     }
 
     /// The block id associated with the block which was voted for
-    pub fn block_id(&self) -> Option<Hash> {
+    pub fn block_id(&self) -> Option<&Hash> {
         match self {
-            Self::Notarize(vote) => Some(vote.block_id),
+            Self::Notarize(vote) => Some(&vote.block_id),
             Self::Finalize(_) => None,
             Self::Skip(_) => None,
-            Self::NotarizeFallback(vote) => Some(vote.block_id),
+            Self::NotarizeFallback(vote) => Some(&vote.block_id),
             Self::SkipFallback(_) => None,
-            Self::Genesis(vote) => Some(vote.block_id),
+            Self::Genesis(vote) => Some(&vote.block_id),
         }
     }
 }

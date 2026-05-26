@@ -9,6 +9,7 @@ dependencies = [
  "serde",
  "serde_json",
  "solana-bls-signatures",
+ "solana-hash",
  "solana-pubkey",
  "wincode",
 ]
@@ -557,6 +558,19 @@ name = "solana-define-syscall"
 version = "5.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "21e14a4f604117f379840956a8fc8695e4c84f5b0ebed192f31f60d9b85d581d"
+
+[[package]]
+name = "solana-hash"
+version = "4.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f1b113239362cee7093bfb250467138f079a2a03673181dc15bff6ccd677912d"
+dependencies = [
+ "five8",
+ "serde",
+ "serde_derive",
+ "solana-atomic-u64",
+ "wincode",
+]
 
 [[package]]
 name = "solana-program-error"
